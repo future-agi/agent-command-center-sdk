@@ -1,0 +1,12 @@
+# Source & tooling
+src/
+tests/
+tsconfig.json
+tsconfig.cjs.json
+vitest.config.ts
+.eslintrc*
+
+# Dev files
+*.tsbuildinfo
+.gitignore
+node_modules/

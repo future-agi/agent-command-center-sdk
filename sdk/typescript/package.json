@@ -1,0 +1,83 @@
+{
+  "name": "@agentcc/client",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for the AgentCC AI Gateway — OpenAI-compatible, with routing, guardrails, caching, and cost tracking.",
+  "license": "Apache-2.0",
+  "author": "Future AGI <engineering@futureagi.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/future-agi/agent-command-center"
+  },
+  "keywords": ["llm", "gateway", "ai", "openai", "agentcc", "proxy", "guardrails"],
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./testing": {
+      "import": {
+        "types": "./dist/esm/testing.d.ts",
+        "default": "./dist/esm/testing.js"
+      },
+      "require": {
+        "types": "./dist/cjs/testing.d.ts",
+        "default": "./dist/cjs/testing.js"
+      }
+    },
+    "./express": {
+      "import": {
+        "types": "./dist/esm/express.d.ts",
+        "default": "./dist/esm/express.js"
+      },
+      "require": {
+        "types": "./dist/cjs/express.d.ts",
+        "default": "./dist/cjs/express.js"
+      }
+    },
+    "./nextjs": {
+      "import": {
+        "types": "./dist/esm/nextjs.d.ts",
+        "default": "./dist/esm/nextjs.js"
+      },
+      "require": {
+        "types": "./dist/cjs/nextjs.d.ts",
+        "default": "./dist/cjs/nextjs.js"
+      }
+    }
+  },
+  "files": ["dist", "LICENSE", "README.md"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/ --ext .ts",
+    "lint:fix": "eslint src/ --ext .ts --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  },
+  "dependencies": {}
+}
