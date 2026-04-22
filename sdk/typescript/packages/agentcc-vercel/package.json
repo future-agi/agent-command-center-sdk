@@ -1,0 +1,36 @@
+{
+  "name": "@agentcc/vercel",
+  "version": "1.0.0",
+  "description": "Vercel AI SDK provider for the AgentCC AI Gateway — use generateText/streamText with AgentCC routing, guardrails, and caching.",
+  "license": "Apache-2.0",
+  "author": "Future AGI <engineering@futureagi.com>",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "LICENSE", "README.md"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "ai": ">=3.0.0",
+    "@ai-sdk/openai": ">=0.0.40"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "ai": "^3.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+    "mutating: creates/deletes real resources; only runs when MUTATING=1",
+    "admin: needs AGENTCC_ADMIN_TOKEN; skipped otherwise",
+    "expensive: image/audio/batch calls; cost more than a single chat completion",
+]

@@ -1,0 +1,37 @@
+{
+  "name": "@agentcc/react",
+  "version": "1.0.0",
+  "description": "React hooks and components for building AI chat interfaces with the AgentCC gateway.",
+  "license": "Apache-2.0",
+  "author": "Future AGI <engineering@futureagi.com>",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "LICENSE", "README.md"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "@agentcc/client": ">=0.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0",
+    "@agentcc/client": "file:../../"
+  }
+}
