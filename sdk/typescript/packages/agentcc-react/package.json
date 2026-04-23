@@ -1,9 +1,30 @@
 {
   "name": "@agentcc/react",
   "version": "1.0.0",
-  "description": "React hooks and components for building AI chat interfaces with the AgentCC gateway.",
+  "description": "React hooks and context for AI chat UIs backed by Agent Command Center — Future AGI's open-source AI gateway.",
   "license": "Apache-2.0",
   "author": "Future AGI <engineering@futureagi.com>",
+  "homepage": "https://github.com/future-agi/agent-command-center/tree/main/sdk/typescript/packages/agentcc-react",
+  "bugs": "https://github.com/future-agi/agent-command-center/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/future-agi/agent-command-center",
+    "directory": "sdk/typescript/packages/agentcc-react"
+  },
+  "keywords": [
+    "react",
+    "react-hooks",
+    "ai",
+    "llm",
+    "chat",
+    "streaming",
+    "openai",
+    "agentcc",
+    "agent-command-center",
+    "future-agi",
+    "gateway",
+    "structured-output"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

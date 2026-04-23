@@ -1,6 +1,11 @@
 # @agentcc/react
 
-React hooks and context for building AI chat UIs backed by the AgentCC gateway. Provides `AgentCCProvider` for client injection and `useAgentCCChat`, `useAgentCCCompletion`, and `useAgentCCObject` hooks for common interaction patterns.
+<p>
+  <a href="https://www.npmjs.com/package/@agentcc/react"><img src="https://img.shields.io/npm/v/@agentcc/react?style=flat-square&label=npm" alt="npm"></a>
+  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+</p>
+
+React context and hooks for AI chat UIs backed by the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source AI gateway. Ships `AgentCCProvider` for client injection plus `useAgentCCChat`, `useAgentCCCompletion`, and `useAgentCCObject` hooks for streaming chat, one-shot completions, and structured output.
 
 ## Install
 
@@ -111,7 +116,9 @@ function SummaryPage() {
 
 ## Documentation
 
-[https://docs.futureagi.com](https://docs.futureagi.com)
+- [Full docs](https://docs.futureagi.com/agentcc/integrations/react)
+- [Gateway docs](https://docs.futureagi.com/docs/command-center)
+- [Monorepo README](../../../README.md)
 
 ## License
 
