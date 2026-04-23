@@ -1,6 +1,11 @@
 # @agentcc/vercel
 
-Vercel AI SDK provider for the AgentCC gateway. Use `generateText`, `streamText`, structured output, and tools through the Vercel AI SDK while routing through AgentCC's routing, caching, guardrails, and cost tracking.
+<p>
+  <a href="https://www.npmjs.com/package/@agentcc/vercel"><img src="https://img.shields.io/npm/v/@agentcc/vercel?style=flat-square&label=npm" alt="npm"></a>
+  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+</p>
+
+Vercel AI SDK provider for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source AI gateway. Use `generateText`, `streamText`, structured output, and tools through the Vercel AI SDK while every call routes through Agent Command Center's routing, caching, guardrails, and cost tracking.
 
 ## Install
 
@@ -106,7 +111,9 @@ const result = await streamText({
 
 ## Documentation
 
-[https://docs.futureagi.com](https://docs.futureagi.com)
+- [Full docs](https://docs.futureagi.com/agentcc/integrations/vercel)
+- [Gateway docs](https://docs.futureagi.com/docs/command-center)
+- [Monorepo README](../../../README.md)
 
 ## License
 

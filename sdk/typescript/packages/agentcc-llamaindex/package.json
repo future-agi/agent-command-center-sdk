@@ -1,9 +1,30 @@
 {
   "name": "@agentcc/llamaindex",
   "version": "1.0.0",
-  "description": "LlamaIndex.TS integration for the AgentCC AI Gateway.",
+  "description": "LlamaIndex.TS integration for Agent Command Center — Future AGI's open-source AI gateway. LLM and embedding classes.",
   "license": "Apache-2.0",
   "author": "Future AGI <engineering@futureagi.com>",
+  "homepage": "https://github.com/future-agi/agent-command-center/tree/main/sdk/typescript/packages/agentcc-llamaindex",
+  "bugs": "https://github.com/future-agi/agent-command-center/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/future-agi/agent-command-center",
+    "directory": "sdk/typescript/packages/agentcc-llamaindex"
+  },
+  "keywords": [
+    "llamaindex",
+    "llamaindex-ts",
+    "rag",
+    "ai",
+    "llm",
+    "openai",
+    "agentcc",
+    "agent-command-center",
+    "future-agi",
+    "gateway",
+    "embeddings",
+    "retrieval"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

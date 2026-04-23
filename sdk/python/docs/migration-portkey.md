@@ -118,7 +118,7 @@ AgentCC's `GatewayConfig` is a typed dataclass with IDE autocomplete and validat
 | `RetryConfig`              | Retry with backoff, jitter, Retry-After           |
 | `TimeoutConfig`            | Granular connect/read/write/total timeouts        |
 
-The config serializes to `x-prism-*` headers automatically via `config.to_headers()`.
+The config serializes to `x-agentcc-*` headers automatically via `config.to_headers()`.
 
 ---
 

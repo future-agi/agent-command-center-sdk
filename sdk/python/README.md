@@ -1,6 +1,12 @@
 # agentcc
 
-Python SDK for the AgentCC gateway — OpenAI-compatible, typed, with first-class streaming, tools, structured output, guardrails, and cost tracking.
+<p>
+  <a href="https://pypi.org/project/agentcc/"><img src="https://img.shields.io/pypi/v/agentcc?style=flat-square&label=pypi" alt="PyPI"></a>
+  <a href="https://pypi.org/project/agentcc/"><img src="https://img.shields.io/pypi/pyversions/agentcc?style=flat-square" alt="Python versions"></a>
+  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+</p>
+
+Python SDK for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source, OpenAI-compatible AI gateway. Sync + async clients, first-class streaming, tool calling, structured output, and per-request gateway config for routing, caching, guardrails, and budgets.
 
 ## Install
 
@@ -134,7 +140,9 @@ asyncio.run(main())
 
 ## Documentation
 
-[https://docs.futureagi.com](https://docs.futureagi.com)
+- [Full docs](https://docs.futureagi.com/agentcc/sdk/python)
+- [Gateway docs](https://docs.futureagi.com/docs/command-center)
+- [Monorepo README](../../README.md)
 
 ## License
 

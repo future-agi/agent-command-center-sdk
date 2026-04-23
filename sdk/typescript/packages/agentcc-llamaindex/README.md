@@ -1,6 +1,11 @@
 # @agentcc/llamaindex
 
-LlamaIndex.TS integration for the AgentCC gateway. Provides `AgentCCLLM` and `AgentCCEmbedding` classes that implement the LlamaIndex LLM and BaseEmbedding interfaces, routing all calls through the AgentCC gateway.
+<p>
+  <a href="https://www.npmjs.com/package/@agentcc/llamaindex"><img src="https://img.shields.io/npm/v/@agentcc/llamaindex?style=flat-square&label=npm" alt="npm"></a>
+  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+</p>
+
+LlamaIndex.TS integration for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source AI gateway. Ships `AgentCCLLM` and `AgentCCEmbedding` — implementations of LlamaIndex's `LLM` and `BaseEmbedding` interfaces — so any LlamaIndex pipeline can route through the gateway with routing, caching, and guardrails intact.
 
 ## Install
 
@@ -61,11 +66,13 @@ const embedder = new AgentCCEmbedding({
 const vector = await embedder.getTextEmbedding("Hello, world");
 ```
 
-Pass `llm` and `embedModel` to any LlamaIndex pipeline that accepts those options to route through the AgentCC gateway with routing, caching, and guardrails intact.
+Pass `llm` and `embedModel` into any LlamaIndex pipeline (indices, query engines, agents) and every call routes through Agent Command Center.
 
 ## Documentation
 
-[https://docs.futureagi.com](https://docs.futureagi.com)
+- [Full docs](https://docs.futureagi.com/agentcc/integrations/llamaindex)
+- [Gateway docs](https://docs.futureagi.com/docs/command-center)
+- [Monorepo README](../../../README.md)
 
 ## License
 
