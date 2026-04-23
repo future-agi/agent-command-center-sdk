@@ -1,7 +1,19 @@
+<div align="center">
+
+![Company Logo](Logo.png)
+
 # AgentCC SDK
 
-AgentCC is an AI gateway that sits between your application and LLM providers, offering an OpenAI-compatible REST API at `https://gateway.futureagi.com/v1`. This monorepo contains the official client SDKs for Python and TypeScript, along with framework integrations for LangChain.js, LlamaIndex.TS, React, and the Vercel AI SDK.
+</div>
 
+---
+
+AgentCC is an AI gateway that sits between your application and LLM providers, offering an OpenAI-compatible REST API at `https://gateway.futureagi.com/v1`. This monorepo contains the official client SDKs for Python and TypeScript, along with framework integrations for LangChain.js, LlamaIndex.TS, React, and the Vercel AI SDK.
+<div align="center">
+  <img src="command-repo.gif" alt="AgentCC Demo" width="70%" />
+</div>
+
+---
 ## Packages
 
 | Package | Runtime | Install | Purpose |
