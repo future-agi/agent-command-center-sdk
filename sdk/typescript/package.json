@@ -1,14 +1,33 @@
 {
   "name": "@agentcc/client",
   "version": "1.0.0",
-  "description": "TypeScript SDK for the AgentCC AI Gateway — OpenAI-compatible, with routing, guardrails, caching, and cost tracking.",
+  "description": "TypeScript SDK for Agent Command Center — Future AGI's open-source, OpenAI-compatible AI gateway. Fully typed, ESM + CJS, with routing, guardrails, caching, and cost tracking.",
   "license": "Apache-2.0",
   "author": "Future AGI <engineering@futureagi.com>",
+  "homepage": "https://github.com/future-agi/agent-command-center",
+  "bugs": "https://github.com/future-agi/agent-command-center/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/future-agi/agent-command-center"
+    "url": "https://github.com/future-agi/agent-command-center",
+    "directory": "sdk/typescript"
   },
-  "keywords": ["llm", "gateway", "ai", "openai", "agentcc", "proxy", "guardrails"],
+  "keywords": [
+    "ai",
+    "llm",
+    "openai",
+    "openai-compatible",
+    "gateway",
+    "agentcc",
+    "agent-command-center",
+    "future-agi",
+    "guardrails",
+    "routing",
+    "caching",
+    "streaming",
+    "tool-calling",
+    "structured-output",
+    "typescript-sdk"
+  ],
   "type": "module",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
