@@ -54,7 +54,7 @@
 
 ## What's in here
 
-This repo ships the **client SDKs** for the Agent Command Center. The gateway itself — the Go service that handles routing, caching, guardrails, cost tracking, and the OpenAI-compatible endpoint — lives in the [`future-agi/future-agi`](https://github.com/future-agi/future-agi) platform monorepo. These SDKs give you typed Python and TypeScript clients, plus first-class integrations for the frameworks your apps already use.
+This repo ships the **client SDKs** for the Agent Command Center. The gateway itself — the Go service that handles routing, caching, guardrails, cost tracking, and the OpenAI-compatible endpoint — lives in the [`future-agi/future-agi`](https://github.com/future-agi/future-agi) platform monorepo. These SDKs give you typed Python and TypeScript clients, plus integrations for LangChain, LlamaIndex, React, and the Vercel AI SDK.
 
 If you already know OpenAI's SDK, you already know these. Swap `OpenAI` for `AgentCC`, point `base_url` at the gateway, and every gateway feature — multi-provider routing, semantic caching, inline guardrails, per-key budgets — is available through the same call.
 
@@ -78,7 +78,7 @@ If you already know OpenAI's SDK, you already know these. Swap `OpenAI` for `Age
 - **OpenAI-compatible surface.** Chat, completions, embeddings, images, audio, moderations, files, batches, rerank, responses — same shape as OpenAI's SDK. Migrating is a one-line change.
 - **100+ providers through one endpoint.** OpenAI, Anthropic, Google, Vertex AI, Bedrock, Azure, Groq, Together, Mistral, Fireworks, Ollama, vLLM — whatever you pick, your SDK call doesn't change.
 - **15 routing strategies, surfaced per request.** Fallback chains, shadow traffic, latency-aware routing, cost-optimised selection, circuit breakers — configured via a typed `config` option or gateway-side virtual keys.
-- **Streaming, tool calling, structured output** — all first-class, all typed. Iterator patterns in Python, async iterables in TypeScript.
+- **Streaming, tool calling, structured output.** Iterator patterns in Python, async iterables in TypeScript — both fully typed.
 - **Inline guardrails + cost tracking.** Every request can carry a guardrail policy and a budget header. The gateway enforces both; the SDK surfaces the results.
 - **Framework integrations that don't rewrap.** `@agentcc/langchain` is a genuine `BaseChatModel`. `@agentcc/vercel` is a real AI SDK provider. `@agentcc/llamaindex` implements LlamaIndex's `LLM` and `BaseEmbedding`. Use them the way you use the originals.
 
@@ -260,10 +260,8 @@ Apache License 2.0 — see [LICENSE](LICENSE).
 
 <div align="center">
 
-**Built with ❤️ by the [Future AGI](https://futureagi.com) team and [contributors worldwide](https://github.com/future-agi/agent-command-center/graphs/contributors).**
+Made by the [Future AGI](https://futureagi.com) team and [contributors](https://github.com/future-agi/agent-command-center/graphs/contributors).
 
-If these SDKs help you ship, a ⭐ helps more teams find us.
-
-[🌐 futureagi.com](https://futureagi.com) · [📖 docs.futureagi.com](https://docs.futureagi.com) · [☁️ app.futureagi.com](https://app.futureagi.com)
+[futureagi.com](https://futureagi.com) · [docs.futureagi.com](https://docs.futureagi.com) · [app.futureagi.com](https://app.futureagi.com)
 
 </div>
