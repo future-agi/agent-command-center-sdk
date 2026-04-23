@@ -5,14 +5,29 @@ build-backend = "hatchling.build"
 [project]
 name = "agentcc"
 version = "1.0.0"
-description = "Python SDK for the AgentCC LLM Gateway — OpenAI-compatible, type-safe, with guardrails and observability"
+description = "Python SDK for Agent Command Center — Future AGI's open-source, OpenAI-compatible AI gateway. Type-safe, with streaming, tools, structured output, guardrails, and cost tracking."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.9"
 authors = [
     { name = "Future AGI", email = "engineering@futureagi.com" },
 ]
-keywords = ["llm", "gateway", "openai", "proxy", "guardrails", "agentcc"]
+keywords = [
+    "ai",
+    "llm",
+    "openai",
+    "openai-compatible",
+    "gateway",
+    "agentcc",
+    "agent-command-center",
+    "future-agi",
+    "guardrails",
+    "routing",
+    "caching",
+    "streaming",
+    "tool-calling",
+    "structured-output",
+]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -48,8 +63,10 @@ all = ["agentcc[testing,otel,validation,tiktoken,langchain,llamaindex]"]
 
 [project.urls]
 Homepage = "https://github.com/future-agi/agent-command-center"
-Documentation = "https://docs.futureagi.com/prism/sdk/python"
+Documentation = "https://docs.futureagi.com/agentcc/sdk/python"
 Repository = "https://github.com/future-agi/agent-command-center"
+Issues = "https://github.com/future-agi/agent-command-center/issues"
+Changelog = "https://github.com/future-agi/agent-command-center/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/agentcc"]

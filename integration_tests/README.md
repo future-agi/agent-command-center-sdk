@@ -1,12 +1,12 @@
 # Integration Tests
 
-End-to-end tests for the AgentCC Python and TypeScript SDKs, run against a real
-running `prism-gateway` deployment.
+End-to-end tests for the `agentcc` Python and TypeScript SDKs, run against a
+real running Agent Command Center gateway.
 
-These tests exist to verify the wire-format contract between the SDKs (public
-name: `agentcc`) and the gateway (private wire name: `prism`). Unit tests can
-only assert that the SDK builds the right request; only these integration tests
-prove the gateway actually accepts it.
+These tests exist to verify the HTTP contract between the SDKs and the gateway.
+Unit tests can only assert that the SDK builds the right request; only these
+integration tests prove the gateway actually accepts it and returns the shape
+the SDK expects.
 
 ## Layout
 
@@ -36,7 +36,7 @@ pip install -e ../../sdk/python[testing,validation,tiktoken]
 pip install -r requirements.txt
 pytest                             # all non-mutating
 MUTATING=1 pytest                  # include create/delete ops
-pytest tests/test_wire_format.py   # only the critical rename check
+pytest tests/test_wire_format.py   # only the HTTP contract checks
 ```
 
 TypeScript:
@@ -52,8 +52,8 @@ npm test -- tests/wire-format.test.ts
 
 - All mutating tests auto-cleanup their resources (API keys, webhooks, alerts,
   uploaded files, batches) in a `finally` block. If a test crashes mid-run,
-  leftover resources may remain — search the control plane for names matching
-  `agentcc-itest-*` and delete manually.
+  leftover resources may remain — search the Agent Command Center dashboard
+  for names matching `agentcc-itest-*` and delete manually.
 - LLM calls use cheap models (`gpt-4o-mini`, `text-embedding-3-small`,
   `whisper-1`) with minimal prompts. A full non-mutating run costs < $0.10.
 - These tests hit real LLM providers via your gateway. Real tokens, real

@@ -1,6 +1,11 @@
 # @agentcc/langchain
 
-LangChain.js integration for the AgentCC gateway. Provides `ChatAgentCC`, a drop-in replacement for `ChatOpenAI`, so any LangChain chain or agent can route through AgentCC with no structural changes.
+<p>
+  <a href="https://www.npmjs.com/package/@agentcc/langchain"><img src="https://img.shields.io/npm/v/@agentcc/langchain?style=flat-square&label=npm" alt="npm"></a>
+  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+</p>
+
+LangChain.js integration for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source AI gateway. Ships `ChatAgentCC` — a drop-in replacement for `ChatOpenAI` — so any LangChain chain or agent can route through the gateway with no structural changes.
 
 ## Install
 
@@ -70,7 +75,7 @@ const vectors = await embeddings.embedDocuments(["hello", "world"]);
 
 ### Callback handler
 
-`AgentCCCallbackHandler` bridges LangChain callback events to AgentCC's callback system, enabling unified observability across both layers:
+`AgentCCCallbackHandler` bridges LangChain callback events into Agent Command Center's callback system — unified observability across both layers:
 
 ```typescript
 import { AgentCCCallbackHandler } from "@agentcc/langchain";
@@ -86,7 +91,9 @@ await model.invoke([...], { callbacks: [handler] });
 
 ## Documentation
 
-[https://docs.futureagi.com](https://docs.futureagi.com)
+- [Full docs](https://docs.futureagi.com/agentcc/integrations/langchain)
+- [Gateway docs](https://docs.futureagi.com/docs/command-center)
+- [Monorepo README](../../../README.md)
 
 ## License
 

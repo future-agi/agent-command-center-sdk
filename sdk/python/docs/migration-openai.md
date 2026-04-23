@@ -41,13 +41,13 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-This works because the AgentCC gateway speaks the OpenAI wire protocol. All requests are proxied, logged, and enriched with gateway features configured on your org/key.
+This works because the AgentCC gateway exposes an OpenAI-compatible HTTP API. All requests are proxied, logged, and enriched with gateway features configured on your org/key.
 
 ---
 
 ## Approach 2: `create_headers()` -- Keep OpenAI Client, Add AgentCC Features
 
-Use the OpenAI client as-is but inject `x-prism-*` headers to control caching, guardrails, sessions, and more on a per-request basis.
+Use the OpenAI client as-is but inject `x-agentcc-*` headers to control caching, guardrails, sessions, and more on a per-request basis.
 
 ### Before (OpenAI)
 
@@ -101,18 +101,18 @@ response = client.chat.completions.create(
 | Parameter             | Header                        | Purpose                                   |
 |-----------------------|-------------------------------|-------------------------------------------|
 | `api_key`             | `Authorization`               | AgentCC API key                             |
-| `trace_id`            | `x-prism-trace-id`            | Distributed tracing                       |
-| `session_id`          | `x-prism-session-id`          | Session grouping                          |
-| `session_name`        | `x-prism-session-name`        | Human-readable session label              |
-| `user_id`             | `x-prism-user-id`             | Per-user tracking and budgets             |
-| `request_id`          | `x-prism-request-id`          | Idempotency / correlation                 |
-| `metadata`            | `x-prism-metadata`            | Arbitrary JSON metadata                   |
-| `cache_ttl`           | `x-prism-cache-ttl`           | Cache TTL in seconds                      |
-| `cache_namespace`     | `x-prism-cache-namespace`     | Cache isolation namespace                 |
-| `cache_force_refresh` | `x-prism-cache-force-refresh` | Bypass cache for this request             |
-| `guardrail_policy`    | `x-prism-guardrail-policy`    | Guardrail policy IDs (comma-separated)    |
-| `properties`          | `x-prism-property-{key}`      | Custom key-value properties               |
-| `config`              | `x-prism-config`              | Full GatewayConfig as JSON                |
+| `trace_id`            | `x-agentcc-trace-id`            | Distributed tracing                       |
+| `session_id`          | `x-agentcc-session-id`          | Session grouping                          |
+| `session_name`        | `x-agentcc-session-name`        | Human-readable session label              |
+| `user_id`             | `x-agentcc-user-id`             | Per-user tracking and budgets             |
+| `request_id`          | `x-agentcc-request-id`          | Idempotency / correlation                 |
+| `metadata`            | `x-agentcc-metadata`            | Arbitrary JSON metadata                   |
+| `cache_ttl`           | `x-agentcc-cache-ttl`           | Cache TTL in seconds                      |
+| `cache_namespace`     | `x-agentcc-cache-namespace`     | Cache isolation namespace                 |
+| `cache_force_refresh` | `x-agentcc-cache-force-refresh` | Bypass cache for this request             |
+| `guardrail_policy`    | `x-agentcc-guardrail-policy`    | Guardrail policy IDs (comma-separated)    |
+| `properties`          | `x-agentcc-property-{key}`      | Custom key-value properties               |
+| `config`              | `x-agentcc-config`              | Full GatewayConfig as JSON                |
 
 ---
 
