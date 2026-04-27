@@ -20,8 +20,8 @@
 -->
 <a href="https://futureagi.com">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/logo-banner-dark.png">
-    <img alt="Future AGI — Client SDKs for the Agent Command Center" src=".github/assets/logo-banner.png" height="120">
+    <source media="(prefers-color-scheme: dark)" srcset="Logo.png">
+    <img alt="Future AGI — Client SDKs for the Agent Command Center" src="Logo.png" width="100%">
   </picture>
 </a>
 
@@ -60,7 +60,21 @@ If you already know OpenAI's SDK, you already know these. Swap `OpenAI` for `Age
 
 ---
 
+<!--
+  [MARKETING] command-repo.gif
+  What:    Product loop showing the Agent Command Center SDK in action —
+           multi-provider routing, caching, guardrails, cost tracking
+           through one OpenAI-compatible call.
+  Size:    1600 × 900, GIF ≤ 4 MB (use `gifski` to compress).
+  Why here: shows the SDK surface and gateway features in motion right
+            after the "what is this?" intro.
+-->
+<div align="center">
+  <img alt="Agent Command Center SDK — one OpenAI-compatible call, 100+ providers, routing, caching, guardrails" src="command-repo.gif" width="100%">
+</div>
+
 ---
+
 ## Packages
 
 | Package | Runtime | Install | Purpose |
