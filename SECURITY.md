@@ -61,12 +61,12 @@ We will not pursue legal action against security researchers who:
 
 ## Acknowledgement
 
-We maintain a [Security Researcher Hall of Fame](https://futureagi.com/security/hall-of-fame) and are happy to credit reporters who wish to be named. For qualifying reports, we run a bug bounty via HackerOne — contact security@futureagi.com for details.
+We maintain a Security Researcher Hall of Fame and are happy to credit reporters who wish to be named. For qualifying reports, we run a bug bounty via HackerOne — contact security@futureagi.com for details.
 
 ## PGP
 
 If you prefer encrypted communication, our PGP key is available at:
-<https://futureagi.com/.well-known/pgp-key.txt>
+security@futureagi.com
 
 ---
 

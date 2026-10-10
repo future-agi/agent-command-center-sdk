@@ -1,4 +1,4 @@
-# Contributing to `agent-command-center`
+# Contributing to `agent-command-center-sdk`
 
 Thanks for your interest in contributing! This repo ships the client SDKs for [Agent Command Center](https://github.com/future-agi/future-agi) — the Python and TypeScript libraries plus the LangChain, LlamaIndex, React, and Vercel AI SDK integrations.
 
@@ -8,9 +8,9 @@ We welcome contributions of all kinds: bug fixes, new framework integrations, ex
 
 ## Quick links
 
-- 🐛 [Report a bug](https://github.com/future-agi/agent-command-center/issues/new?template=bug_report.yml)
-- ✨ [Request a feature](https://github.com/future-agi/agent-command-center/issues/new?template=feature_request.yml)
-- 🔖 [Good first issues](https://github.com/future-agi/agent-command-center/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- 🐛 [Report a bug](https://github.com/future-agi/agent-command-center-sdk/issues/new?template=bug_report.yml)
+- ✨ [Request a feature](https://github.com/future-agi/agent-command-center-sdk/issues/new?template=feature_request.yml)
+- 🔖 [Good first issues](https://github.com/future-agi/agent-command-center-sdk/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 - 💬 [Join Discord](https://discord.gg/UjZ2gRT5p)
 - 📖 [Shared vocabulary & style guide](docs/VOCABULARY.md)
 - 📖 [Full docs](https://docs.futureagi.com)
@@ -34,7 +34,7 @@ The CLA grants Future AGI, Inc. the rights to use your contribution (including a
 ## Repository layout
 
 ```
-agent-command-center/
+agent-command-center-sdk/
 ├── README.md                          # monorepo landing
 ├── docs/VOCABULARY.md                 # shared naming + voice guide
 ├── sdk/
@@ -57,8 +57,8 @@ agent-command-center/
 ### 1. Fork and clone
 
 ```bash
-gh repo fork future-agi/agent-command-center --clone
-cd agent-command-center
+gh repo fork future-agi/agent-command-center-sdk --clone
+cd agent-command-center-sdk
 ```
 
 ### 2. Python SDK

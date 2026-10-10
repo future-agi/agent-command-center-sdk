@@ -4,11 +4,11 @@
   "description": "TypeScript SDK for Agent Command Center — Future AGI's open-source, OpenAI-compatible AI gateway. Fully typed, ESM + CJS, with routing, guardrails, caching, and cost tracking.",
   "license": "Apache-2.0",
   "author": "Future AGI <engineering@futureagi.com>",
-  "homepage": "https://github.com/future-agi/agent-command-center",
-  "bugs": "https://github.com/future-agi/agent-command-center/issues",
+  "homepage": "https://github.com/future-agi/agent-command-center-sdk",
+  "bugs": "https://github.com/future-agi/agent-command-center-sdk/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/future-agi/agent-command-center",
+    "url": "https://github.com/future-agi/agent-command-center-sdk",
     "directory": "sdk/typescript"
   },
   "keywords": [

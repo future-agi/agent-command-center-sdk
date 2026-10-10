@@ -2,7 +2,7 @@
 
 <p>
   <a href="https://www.npmjs.com/package/@agentcc/llamaindex"><img src="https://img.shields.io/npm/v/@agentcc/llamaindex?style=flat-square&label=npm" alt="npm"></a>
-  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+  <a href="https://github.com/future-agi/agent-command-center-sdk/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
 </p>
 
 LlamaIndex.TS integration for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source AI gateway. Ships `AgentCCLLM` and `AgentCCEmbedding` — implementations of LlamaIndex's `LLM` and `BaseEmbedding` interfaces — so any LlamaIndex pipeline can route through the gateway with routing, caching, and guardrails intact.

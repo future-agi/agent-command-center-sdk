@@ -62,11 +62,11 @@ dev = ["agentcc[testing,otel,validation,tiktoken]", "ruff>=0.3", "mypy>=1.8"]
 all = ["agentcc[testing,otel,validation,tiktoken,langchain,llamaindex]"]
 
 [project.urls]
-Homepage = "https://github.com/future-agi/agent-command-center"
+Homepage = "https://github.com/future-agi/agent-command-center-sdk"
 Documentation = "https://docs.futureagi.com/agentcc/sdk/python"
-Repository = "https://github.com/future-agi/agent-command-center"
-Issues = "https://github.com/future-agi/agent-command-center/issues"
-Changelog = "https://github.com/future-agi/agent-command-center/releases"
+Repository = "https://github.com/future-agi/agent-command-center-sdk"
+Issues = "https://github.com/future-agi/agent-command-center-sdk/issues"
+Changelog = "https://github.com/future-agi/agent-command-center-sdk/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/agentcc"]

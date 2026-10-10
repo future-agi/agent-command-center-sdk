@@ -8,7 +8,7 @@ contact_links:
     url: https://discord.gg/UjZ2gRT5p
     about: Real-time help from the team and community.
   - name: Report a security vulnerability
-    url: https://github.com/future-agi/agent-command-center/blob/main/SECURITY.md
+    url: https://github.com/future-agi/agent-command-center-sdk/blob/main/SECURITY.md
     about: Please report security issues privately — do not open a public issue.
   - name: Full documentation
     url: https://docs.futureagi.com
