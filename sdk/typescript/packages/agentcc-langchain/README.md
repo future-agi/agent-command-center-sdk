@@ -2,7 +2,7 @@
 
 <p>
   <a href="https://www.npmjs.com/package/@agentcc/langchain"><img src="https://img.shields.io/npm/v/@agentcc/langchain?style=flat-square&label=npm" alt="npm"></a>
-  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+  <a href="https://github.com/future-agi/agent-command-center-sdk/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
 </p>
 
 LangChain.js integration for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source AI gateway. Ships `ChatAgentCC` — a drop-in replacement for `ChatOpenAI` — so any LangChain chain or agent can route through the gateway with no structural changes.

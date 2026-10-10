@@ -3,7 +3,7 @@
 <p>
   <a href="https://www.npmjs.com/package/@agentcc/client"><img src="https://img.shields.io/npm/v/@agentcc/client?style=flat-square&label=npm" alt="npm"></a>
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-18+-green?style=flat-square" alt="Node 18+"></a>
-  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+  <a href="https://github.com/future-agi/agent-command-center-sdk/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
 </p>
 
 TypeScript SDK for the [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source, OpenAI-compatible AI gateway. Fully typed, ESM and CJS, Node 18+. Plus a family of framework integrations: LangChain, LlamaIndex, React, and the Vercel AI SDK.

@@ -30,20 +30,20 @@
 **Python and TypeScript SDKs — plus LangChain, LlamaIndex, React, and Vercel AI SDK integrations — for [Agent Command Center](https://github.com/future-agi/future-agi), Future AGI's open-source, OpenAI-compatible AI gateway.**
 
 <p>
-  <a href="https://github.com/future-agi/agent-command-center/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
+  <a href="https://github.com/future-agi/agent-command-center-sdk/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="Apache 2.0"></a>
   <a href="https://pypi.org/project/agentcc/"><img src="https://img.shields.io/pypi/v/agentcc?style=flat-square&label=pypi" alt="PyPI"></a>
   <a href="https://www.npmjs.com/package/@agentcc/client"><img src="https://img.shields.io/npm/v/@agentcc/client?style=flat-square&label=npm" alt="npm"></a>
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9+-blue?style=flat-square" alt="Python 3.9+"></a>
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-18+-green?style=flat-square" alt="Node 18+"></a>
   <a href="https://discord.gg/UjZ2gRT5p"><img src="https://img.shields.io/badge/discord-join-5865F2?style=flat-square" alt="Discord"></a>
-  <a href="https://github.com/future-agi/agent-command-center/stargazers"><img src="https://img.shields.io/github/stars/future-agi/agent-command-center?style=flat-square&color=yellow" alt="GitHub stars"></a>
+  <a href="https://github.com/future-agi/agent-command-center-sdk/stargazers"><img src="https://img.shields.io/github/stars/future-agi/agent-command-center-sdk?style=flat-square&color=yellow" alt="GitHub stars"></a>
 </p>
 
 <p>
   <a href="#-quickstart"><b>Quickstart</b></a> ·
   <a href="https://github.com/future-agi/future-agi"><b>Gateway repo</b></a> ·
   <a href="https://docs.futureagi.com"><b>Docs</b></a> ·
-  <a href="https://app.futureagi.com/auth/jwt/register"><b>Try Cloud (Free)</b></a> ·
+  <a href="https://app.futureagi.com"><b>Try Cloud (Free)</b></a> ·
   <a href="https://discord.gg/UjZ2gRT5p"><b>Discord</b></a> ·
   <a href="https://github.com/orgs/future-agi/discussions"><b>Discussions</b></a>
 </p>
@@ -101,7 +101,7 @@ If you already know OpenAI's SDK, you already know these. Swap `OpenAI` for `Age
 
 ## <a name="-quickstart"></a>🚀 Quickstart
 
-Get a key at [app.futureagi.com](https://app.futureagi.com/auth/jwt/register) (free tier available) or [self-host the gateway](https://github.com/future-agi/future-agi) — then:
+Get a key at [app.futureagi.com](https://app.futureagi.com) (free tier available) or [self-host the gateway](https://github.com/future-agi/future-agi) — then:
 
 <table>
 <tr>
@@ -208,7 +208,7 @@ These SDKs are one slice of the [Future AGI](https://futureagi.com) platform —
 |---|---|
 | [`future-agi/future-agi`](https://github.com/future-agi/future-agi) | Platform monorepo — the gateway itself, evaluations, simulations, tracing, prompt optimization |
 | [`future-agi/traceAI`](https://github.com/future-agi/traceAI) | OpenTelemetry-native instrumentation for 50+ AI frameworks |
-| [`future-agi/ai-evaluation`](https://github.com/future-agi/ai-evaluation) | 50+ evaluation metrics + guardrail scanners |
+| [`future-agi/agent-learning-kit`](https://github.com/future-agi/agent-learning-kit) | 50+ evaluation metrics + guardrail scanners |
 | [`future-agi/agent-opt`](https://github.com/future-agi/agent-opt) | Six prompt-optimization algorithms (GEPA, PromptWizard, and more) |
 
 ---
@@ -217,7 +217,7 @@ These SDKs are one slice of the [Future AGI](https://futureagi.com) platform —
 
 - **Python 3.9+** — for `agentcc`
 - **Node 18+** — for all `@agentcc/*` packages
-- **An Agent Command Center endpoint** — either [Future AGI Cloud](https://app.futureagi.com/auth/jwt/register) (free tier) or a [self-hosted gateway](https://github.com/future-agi/future-agi)
+- **An Agent Command Center endpoint** — either [Future AGI Cloud](https://app.futureagi.com) (free tier) or a [self-hosted gateway](https://github.com/future-agi/future-agi)
 
 ---
 
@@ -235,7 +235,7 @@ These SDKs are one slice of the [Future AGI](https://futureagi.com) platform —
 
 Contributions welcome — bug fixes, new framework integrations, examples, docs improvements, anything.
 
-1. Browse [`good first issue`](https://github.com/future-agi/agent-command-center/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+1. Browse [`good first issue`](https://github.com/future-agi/agent-command-center-sdk/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 2. Read the [Contributing Guide](CONTRIBUTING.md)
 3. Say hi on [Discord](https://discord.gg/UjZ2gRT5p) or [Discussions](https://github.com/orgs/future-agi/discussions)
 
@@ -264,7 +264,7 @@ Apache License 2.0 — see [LICENSE](LICENSE).
 
 <div align="center">
 
-Made by the [Future AGI](https://futureagi.com) team and [contributors](https://github.com/future-agi/agent-command-center/graphs/contributors).
+Made by the [Future AGI](https://futureagi.com) team and [contributors](https://github.com/future-agi/agent-command-center-sdk/graphs/contributors).
 
 [futureagi.com](https://futureagi.com) · [docs.futureagi.com](https://docs.futureagi.com) · [app.futureagi.com](https://app.futureagi.com)
 

@@ -4,11 +4,11 @@
   "description": "LlamaIndex.TS integration for Agent Command Center — Future AGI's open-source AI gateway. LLM and embedding classes.",
   "license": "Apache-2.0",
   "author": "Future AGI <engineering@futureagi.com>",
-  "homepage": "https://github.com/future-agi/agent-command-center/tree/main/sdk/typescript/packages/agentcc-llamaindex",
-  "bugs": "https://github.com/future-agi/agent-command-center/issues",
+  "homepage": "https://github.com/future-agi/agent-command-center-sdk/tree/main/sdk/typescript/packages/agentcc-llamaindex",
+  "bugs": "https://github.com/future-agi/agent-command-center-sdk/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/future-agi/agent-command-center",
+    "url": "https://github.com/future-agi/agent-command-center-sdk",
     "directory": "sdk/typescript/packages/agentcc-llamaindex"
   },
   "keywords": [
