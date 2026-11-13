@@ -104,30 +104,33 @@ const result = await streamText({
 
 ## Environment variables
 
-Use HTTPS when connecting to a network gateway. Each provider emits at most one
-fixed transport warning without logging the URL or API key; requests remain
-allowed. The check runs at construction and on the actual downstream request
-URL before fetch. This also applies to URLs selected via the environment
-variables below.
-
-The warning applies only to non-loopback plain-HTTP targets. In browsers,
-network references such as `//gateway.example/v1` (including backslash variants)
-resolve against the document base URI, including a `<base href>`, or the worker
-location. The request-time check also accounts for base-URI changes after
-construction. Relative proxy paths such as `/api/gateway` remain quiet; unlike
-network references, they do not select a destination host. HTTPS,
-localhost/`.localhost`, `127.0.0.0/8`, and IPv6 loopback HTTP remain quiet too.
-
-The diagnostic does not rewrite URLs, block requests, follow redirects, or
-replace transport encryption or authorization. Native fetch validation is
-unchanged: Node rejects relative URLs without a browser base, and Node and
-browsers reject URLs containing userinfo. Other schemes remain subject to the
-runtime's normal validation, without an HTTP warning.
-
 | Variable | Description |
 |---|---|
 | `AGENTCC_API_KEY` | API key (`sk-agentcc-*`) |
 | `AGENTCC_GATEWAY_URL` or `AGENTCC_BASE_URL` | Gateway base URL |
+
+## Endpoint configuration notice
+
+Each provider warns once when the gateway endpoint is non-loopback HTTP. The
+notice is a fixed message that does not include the URL or API key, and
+requests are still sent. The check runs at construction and on the actual
+downstream request URL before fetch, including URLs selected via the
+environment variables above.
+
+The endpoint is classified the way fetch resolves it. In browsers, relative
+paths such as `/v1` or `/api/gateway` and network references such as
+`//gateway.example/v1` (including backslash variants) resolve against the
+document base URI, including a `<base href>`, or the worker location, so a
+relative path on a page served over non-loopback HTTP produces the notice. The
+request-time check also accounts for base-URI changes after construction.
+HTTPS, localhost/`.localhost`, `127.0.0.0/8`, and IPv6 loopback endpoints stay
+quiet.
+
+The notice does not rewrite URLs, block requests or follow redirects. Native
+fetch validation is unchanged: Node rejects relative URLs without a browser
+base (no notice is emitted for them), and Node and browsers reject URLs
+containing userinfo. Other schemes remain subject to the runtime's normal
+validation, without a notice.
 
 ## Documentation
 

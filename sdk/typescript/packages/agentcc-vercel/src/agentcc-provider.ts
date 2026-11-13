@@ -111,19 +111,16 @@ function env(name: string): string | undefined {
 // ---------------------------------------------------------------------------
 // Transport guidance
 // This provider delegates directly to createOpenAI rather than the
-// @agentcc/client constructor, so it reports a plain-HTTP destination itself.
+// @agentcc/client constructor, so it reports a non-loopback HTTP endpoint itself.
 // ---------------------------------------------------------------------------
 
 function createTransportWarning(): (url: string) => void {
   let warned = false;
   return (url) => {
     if (warned) return;
-    // Relative proxy paths are an intentional same-origin deployment contract.
-    // Normalize only for classification as WHATWG URL does: ignore ASCII tabs
-    // and newlines, trim surrounding C0/space, and recognize backslash network
-    // references too. Never pass this diagnostic-only value to the transport.
-    const reference = url.replace(/[\t\n\r]/g, "").replace(/^[\x00-\x20]+|[\x00-\x20]+$/g, "");
-    if (!/^[a-z][a-z0-9+.-]*:/i.test(reference) && !/^[\\/]{2}/.test(reference)) return;
+    // Absolute URLs, network references and relative paths all resolve the
+    // same way fetch resolves them, so a relative path served from a
+    // non-loopback HTTP page is classified by its effective destination.
     let parsed: URL;
     try {
       // Match fetch's API base URL, including <base href> in documents and
@@ -150,7 +147,7 @@ function createTransportWarning(): (url: string) => void {
     try {
       if (typeof console === "undefined" || console === null || typeof console.warn !== "function") return;
       console.warn(
-        "AgentCC: non-loopback HTTP can expose credentials and request data in transit. Use HTTPS or a trusted local proxy.",
+        "AgentCC: non-loopback HTTP endpoints may require additional configuration. Review the endpoint configuration for your deployment.",
       );
     } catch {
       // A failed diagnostic must not alter the caller's transport.

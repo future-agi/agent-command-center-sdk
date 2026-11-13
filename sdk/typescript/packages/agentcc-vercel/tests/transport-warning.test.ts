@@ -5,8 +5,8 @@ vi.mock("@ai-sdk/openai", () => ({ createOpenAI }));
 import { createAgentCC } from "../src/agentcc-provider.js";
 
 const HTTP_WARNING =
-  "AgentCC: non-loopback HTTP can expose credentials and request data in transit. Use HTTPS or a trusted local proxy.";
-// The warning covers plain HTTP only. Other schemes keep native validation.
+  "AgentCC: non-loopback HTTP endpoints may require additional configuration. Review the endpoint configuration for your deployment.";
+// The notice covers non-loopback HTTP endpoints only. Other schemes keep native validation.
 
 // These are parser/diagnostic contracts, not network tests. No credentials or
 // requests are sent. Every hostname outside loopback uses reserved test space.
@@ -95,16 +95,27 @@ describe("effective transport diagnostics", () => {
     });
   }
 
-  for (const page of ["http://page.example.test/app/", "https://page.example.test/app/", "http://localhost/app/"]) {
-    it.each(["/api/gateway", "api/gateway", "./api/gateway", "../api/gateway", "\\api\\gateway"])(
-      `resolves a path using ${page}: %s`,
-      (baseURL) => {
-        vi.stubGlobal("document", { baseURI: page });
-        createAgentCC({ baseURL });
-        expect(vi.mocked(console.warn).mock.calls).toEqual([]);
-      },
-    );
+  const relativePaths = ["/v1", "/api/gateway", "api/gateway", "./api/gateway", "../api/gateway", "\\api\\gateway"];
+  const pageCases: [string, string[][]][] = [
+    ["http://page.example.test/app/", [[HTTP_WARNING]]],
+    ["https://page.example.test/app/", []],
+    ["http://localhost/app/", []],
+    ["http://127.0.0.1/app/", []],
+    ["http://[::1]/app/", []],
+  ];
+  for (const [page, expected] of pageCases) {
+    it.each(relativePaths)(`resolves a path using ${page}: %s`, (baseURL) => {
+      vi.stubGlobal("document", { baseURI: page });
+      createAgentCC({ baseURL });
+      expect(vi.mocked(console.warn).mock.calls).toEqual(expected);
+    });
   }
+
+  it.each(pageCases)("resolves a path using the worker location %s", (href, expected) => {
+    vi.stubGlobal("location", { href });
+    createAgentCC({ baseURL: "/v1" });
+    expect(vi.mocked(console.warn).mock.calls).toEqual(expected);
+  });
 
   it.each(["/api/gateway", "//gateway.example.test/v1", "http://[", "http:"])(
     "does not invent an effective target in Node: %s", (baseURL) => {
@@ -126,12 +137,15 @@ describe("effective transport diagnostics", () => {
     expect(vi.mocked(console.warn).mock.calls).toEqual([[HTTP_WARNING]]);
   });
 
-  it("keeps relative environment proxy settings quiet", () => {
+  it.each([
+    ["http://page.example.test/", [[HTTP_WARNING]]],
+    ["https://page.example.test/", []],
+  ])("resolves relative environment proxy settings against %s", (baseURI, expected) => {
     vi.stubEnv("AGENTCC_GATEWAY_URL", "/api/gateway");
-    vi.stubGlobal("document", { baseURI: "http://page.example.test/" });
+    vi.stubGlobal("document", { baseURI });
     try {
       createAgentCC();
-      expect(vi.mocked(console.warn).mock.calls).toEqual([]);
+      expect(vi.mocked(console.warn).mock.calls).toEqual(expected);
     } finally {
       vi.unstubAllEnvs();
     }
@@ -167,7 +181,7 @@ describe("effective transport diagnostics", () => {
     expect(fetch).toHaveBeenCalledTimes(2);
   });
 
-  it("keeps relative proxy dispatch quiet after a base-URI change", async () => {
+  it("checks relative proxy dispatch against the current base URI and warns once", async () => {
     const fetch = vi.fn().mockResolvedValue(new Response("example"));
     vi.stubGlobal("fetch", fetch);
     vi.stubGlobal("document", { baseURI: "https://page.example.test/" });
@@ -176,7 +190,7 @@ describe("effective transport diagnostics", () => {
     vi.stubGlobal("document", { baseURI: "http://page.example.test/" });
     await options.fetch("/api/gateway/chat/completions", {});
     await options.fetch("/api/gateway/embeddings", {});
-    expect(vi.mocked(console.warn).mock.calls).toEqual([]);
+    expect(vi.mocked(console.warn).mock.calls).toEqual([[HTTP_WARNING]]);
     expect(fetch).toHaveBeenNthCalledWith(1, "/api/gateway/chat/completions", {});
     expect(fetch).toHaveBeenNthCalledWith(2, "/api/gateway/embeddings", {});
   });

@@ -38,7 +38,7 @@ describe("createAgentCC", () => {
   });
 
   const WARNING =
-    "AgentCC: non-loopback HTTP can expose credentials and request data in transit. Use HTTPS or a trusted local proxy.";
+    "AgentCC: non-loopback HTTP endpoints may require additional configuration. Review the endpoint configuration for your deployment.";
 
   it.each([
     "http://gateway.example.test/v1",
