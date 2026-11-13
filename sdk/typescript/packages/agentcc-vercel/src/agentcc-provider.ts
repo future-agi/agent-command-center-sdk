@@ -109,6 +109,53 @@ function env(name: string): string | undefined {
 }
 
 // ---------------------------------------------------------------------------
+// Transport guidance
+// This provider delegates directly to createOpenAI rather than the
+// @agentcc/client constructor, so it reports a non-loopback HTTP endpoint itself.
+// ---------------------------------------------------------------------------
+
+function createTransportWarning(): (url: string) => void {
+  let warned = false;
+  return (url) => {
+    if (warned) return;
+    // Absolute URLs, network references and relative paths all resolve the
+    // same way fetch resolves them, so a relative path served from a
+    // non-loopback HTTP page is classified by its effective destination.
+    let parsed: URL;
+    try {
+      // Match fetch's API base URL, including <base href> in documents and
+      // location in workers. Keep this structural so Node needs no DOM types.
+      const runtime = globalThis as typeof globalThis & {
+        document?: { baseURI?: string };
+        location?: { href?: string };
+      };
+      parsed = new URL(url, runtime.document?.baseURI ?? runtime.location?.href);
+    } catch {
+      // Native fetch rejects unresolvable URLs too (including relative URLs
+      // without a browser base). Leave its validation and errors unchanged.
+      return;
+    }
+    if (parsed.protocol !== "http:") return;
+    const hostname = parsed.hostname.toLowerCase().replace(/\.$/, "");
+    const loopback =
+      hostname === "localhost" ||
+      hostname.endsWith(".localhost") ||
+      hostname === "[::1]" ||
+      /^127(?:\.[0-9]{1,3}){3}$/.test(hostname);
+    if (loopback) return;
+    warned = true;
+    try {
+      if (typeof console === "undefined" || console === null || typeof console.warn !== "function") return;
+      console.warn(
+        "AgentCC: non-loopback HTTP endpoints may require additional configuration. Review the endpoint configuration for your deployment.",
+      );
+    } catch {
+      // A failed diagnostic must not alter the caller's transport.
+    }
+  };
+}
+
+// ---------------------------------------------------------------------------
 // createAgentCC
 // ---------------------------------------------------------------------------
 
@@ -184,6 +231,8 @@ export function createAgentCC(
     env("AGENTCC_GATEWAY_URL") ||
     env("AGENTCC_BASE_URL") ||
     "https://api.agentcc.ai/v1";
+  const warnTransport = createTransportWarning();
+  warnTransport(baseURL);
 
   const agentccHeaders = buildAgentCCHeaders(settings);
 
@@ -195,5 +244,11 @@ export function createAgentCC(
       ...settings.headers,
     },
     compatibility: "compatible",
+    fetch: (input, init) => {
+      // Inspect the actual downstream request, not a guessed endpoint suffix.
+      // This also covers browser base-URI changes after provider construction.
+      warnTransport(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
+      return globalThis.fetch(input, init);
+    },
   });
 }
