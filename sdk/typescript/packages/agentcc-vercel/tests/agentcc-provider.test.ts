@@ -34,6 +34,59 @@ describe("createAgentCC", () => {
 
   afterEach(() => {
     process.env = originalEnv;
+    vi.restoreAllMocks();
+  });
+
+  const WARNING =
+    "AgentCC: non-loopback HTTP can expose credentials and request data in transit. Use HTTPS or a trusted local proxy.";
+
+  it.each([
+    "http://gateway.example.test/v1",
+    "http://localhost.other.test/v1",
+    "http://10.0.0.8/v1",
+    "http://[2001:db8::1]/v1",
+  ])("warns once on provider construction without logging the URL or key: %s", (baseURL) => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const privateURL = baseURL.replace("http://", "http://private-user:private-password@") + "?token=private-query";
+    const provider = createAgentCC({ apiKey: "private-api-key", baseURL: privateURL });
+    provider("test-model");
+    provider("another-model");
+    expect(warn.mock.calls).toEqual([[WARNING]]);
+    expect(JSON.stringify(warn.mock.calls)).not.toContain("private");
+    expect(mockCreateOpenAI.mock.calls[0][0]).toMatchObject({ apiKey: "private-api-key", baseURL: privateURL });
+  });
+
+  it("warns for both gateway and fallback environment URLs", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    process.env.AGENTCC_GATEWAY_URL = "http://gateway.example.test/v1";
+    createAgentCC({ apiKey: "synthetic" });
+    delete process.env.AGENTCC_GATEWAY_URL;
+    process.env.AGENTCC_BASE_URL = "http://backup.example.test/v1";
+    createAgentCC({ apiKey: "synthetic" });
+    expect(warn.mock.calls).toEqual([[WARNING], [WARNING]]);
+  });
+
+  it.each([
+    "https://gateway.example.test/v1",
+    "/api/gateway",
+    "http://localhost/v1",
+    "http://service.localhost./v1",
+    "http://127.1/v1",
+    "http://127.255.255.255/v1",
+    "http://[::1]/v1",
+    "http://[0:0:0:0:0:0:0:1]/v1",
+  ])("keeps secure, relative and loopback destinations quiet: %s", (baseURL) => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    createAgentCC({ apiKey: "synthetic", baseURL });
+    expect(warn).not.toHaveBeenCalled();
+    expect(mockCreateOpenAI.mock.calls[0][0].baseURL).toBe(baseURL);
+  });
+
+  it("does not break the provider if the diagnostic sink fails", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => { throw new Error("no console"); });
+    expect(() => createAgentCC({ apiKey: "synthetic", baseURL: "http://gateway.example.test" })).not.toThrow();
+    expect(warn).toHaveBeenCalledOnce();
+    expect(mockCreateOpenAI).toHaveBeenCalledOnce();
   });
 
   it("passes apiKey and baseURL to createOpenAI", () => {

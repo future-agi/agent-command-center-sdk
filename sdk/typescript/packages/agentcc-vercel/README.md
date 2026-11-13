@@ -104,6 +104,26 @@ const result = await streamText({
 
 ## Environment variables
 
+Use HTTPS when connecting to a network gateway. Each provider emits at most one
+fixed transport warning without logging the URL or API key; requests remain
+allowed. The check runs at construction and on the actual downstream request
+URL before fetch. This also applies to URLs selected via the environment
+variables below.
+
+The warning applies only to non-loopback plain-HTTP targets. In browsers,
+network references such as `//gateway.example/v1` (including backslash variants)
+resolve against the document base URI, including a `<base href>`, or the worker
+location. The request-time check also accounts for base-URI changes after
+construction. Relative proxy paths such as `/api/gateway` remain quiet; unlike
+network references, they do not select a destination host. HTTPS,
+localhost/`.localhost`, `127.0.0.0/8`, and IPv6 loopback HTTP remain quiet too.
+
+The diagnostic does not rewrite URLs, block requests, follow redirects, or
+replace transport encryption or authorization. Native fetch validation is
+unchanged: Node rejects relative URLs without a browser base, and Node and
+browsers reject URLs containing userinfo. Other schemes remain subject to the
+runtime's normal validation, without an HTTP warning.
+
 | Variable | Description |
 |---|---|
 | `AGENTCC_API_KEY` | API key (`sk-agentcc-*`) |
